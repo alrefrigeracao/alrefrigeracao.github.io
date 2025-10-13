@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços de Ar Condicionado | Palmas-TO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00A859;
+            --secondary: #0085CC;
+            --dark: #333333;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            height: 60px;
+            width: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('foto1.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #008e47;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .btn-whatsapp i {
+            margin-right: 8px;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .service-content {
+            flex: 1;
+        }
+        
+        .service-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .service-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .service-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .service-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .service-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        .about-img {
+            height: 400px;
+            border-radius: 10px;
+            background-image: url('foto2.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            transition: all 0.3s;
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            background-color: #008e47;
+        }
+        
+        .floating-whatsapp i {
+            color: white;
+            font-size: 1.8rem;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 168, 89, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(0, 168, 89, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 168, 89, 0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .service-card {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- COLOQUE SUA LOGO COMO "logo.jpg" -->
+                <img src="logo.jpg" alt="Serviços de Ar Condicionado">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#gallery">Galeria</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <h1>Serviços Especializados em Ar Condicionado</h1>
+            <p>Instalação, manutenção e consertos em geral para ar condicionado residencial e comercial em Palmas e região.</p>
+            <a href="https://wa.me/5563991236033?text=Olá! Gostaria de solicitar um orçamento para serviços de ar condicionado." class="btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Fale Conosco no WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+                <p>Oferecemos soluções completas para seu ar condicionado com qualidade e garantia.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Instalação</h3>
+                        <p>Instalação profissional de ar condicionado residencial e comercial com garantia de funcionamento.</p>
+                        <a href="https://wa.me/5563991236033?text=Olá! Gostaria de solicitar um orçamento para instalação de ar condicionado." class="service-link" target="_blank">
+                            Solicitar orçamento <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Manutenção Preventiva</h3>
+                        <p>Evite problemas futuros com nossa manutenção preventiva especializada.</p>
+                        <a href="https://wa.me/5563991236033?text=Olá! Gostaria de agendar uma manutenção preventiva para meu ar condicionado." class="service-link" target="_blank">
+                            Agendar manutenção <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Consertos em Geral</h3>
+                        <p>Consertamos qualquer problema em seu ar condicionado com peças de qualidade.</p>
+                        <a href="https://wa.me/5563991236033?text=Olá! Meu ar condicionado está com problema, preciso de conserto." class="service-link" target="_blank">
+                            Solicitar conserto <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gas-pump"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Recarga de Gás</h3>
+                        <p>Recarga de gás refrigerante com equipamentos de precisão para melhor performance.</p>
+                        <a href="https://wa.me/5563991236033?text=Olá! Gostaria de solicitar uma recarga de gás para meu ar condicionado." class="service-link" target="_blank">
+                            Solicitar recarga <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-toolbox"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Manutenção Corretiva</h3>
+                        <p>Identificamos e corrigimos problemas existentes em seu equipamento.</p>
+                        <a href="https://wa.me/5563991236033?text=Olá! Preciso de manutenção corretiva para meu ar condicionado." class="service-link" target="_blank">
+                            Solicitar manutenção <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-dolly"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Desinstalação</h3>
+                        <p>Desinstalação profissional sem danificar seu equipamento ou ambiente.</p>
+                        <a href="https://wa.me/5563991236033?text=Olá! Gostaria de solicitar a desinstalação de um ar condicionado." class="service-link" target="_blank">
+                            Solicitar desinstalação <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Especialistas em Ar Condicionado em Palmas</h2>
+                    <p>Com anos de experiência no mercado, oferecemos serviços especializados em ar condicionado residencial e comercial para a região de Palmas e arredores.</p>
+                    <p>Nossa equipe é formada por técnicos qualificados e capacitados para realizar desde a instalação até a manutenção corretiva de seu equipamento, garantindo sempre a melhor performance e durabilidade.</p>
+                    <p>Trabalhamos com as melhores marcas e peças do mercado, oferecendo garantia em todos os nossos serviços para sua total tranquilidade.</p>
+                    <a href="https://wa.me/5563991236033?text=Olá! Gostaria de mais informações sobre os serviços de ar condicionado." class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Fale Conosco
+                    </a>
+                </div>
+                <div class="about-img">
+                    <!-- Foto 2 carregada automaticamente via CSS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Trabalhos</h2>
+                <p>Confira alguns dos nossos serviços realizados em Palmas e região.</p>
+            </div>
+            <div class="gallery-grid">
+                <!-- 
+                    COLOQUE SUAS FOTOS COMO:
+                    foto3.jpg, foto4.jpg, foto5.jpg, foto6.jpg 
+                -->
+                <div class="gallery-item" style="background-image: url('foto3.jpg')"></div>
+                <div class="gallery-item" style="background-image: url('foto4.jpg')"></div>
+                <div class="gallery-item" style="background-image: url('foto5.jpg')"></div>
+                <div class="gallery-item" style="background-image: url('foto6.jpg')"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Precisa de Serviços para seu Ar Condicionado?</h2>
+            <p>Entre em contato agora mesmo pelo WhatsApp e solicite um orçamento sem compromisso!</p>
+            <a href="https://wa.me/5563991236033?text=Olá! Gostaria de solicitar um orçamento para serviços de ar condicionado." class="btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Solicitar Orçamento
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Nossa Empresa</h3>
+                    <p style="color: #adb5bd; margin-bottom: 20px;">Especialistas em serviços de ar condicionado residencial e comercial em Palmas-TO.</p>
+                    <div style="color: white; font-weight: bold;">
+                        <!-- Logo será carregada automaticamente do header -->
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Instalação</a></li>
+                        <li><a href="#">Manutenção Preventiva</a></li>
+                        <li><a href="#">Manutenção Corretiva</a></li>
+                        <li><a href="#">Desinstalação</a></li>
+                        <li><a href="#">Recarga de Gás</a></li>
+                        <li><a href="#">Consertos em Geral</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Palmas - TO</span>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <span>(63) 99123-6033</span>
+                        </li>
+                        <li>
+                            <i class="far fa-clock"></i>
+                            <span>Seg - Sáb: 8h às 18h</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Serviços de Ar Condicionado - Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5563991236033?text=Olá! Gostaria de informações sobre serviços de ar condicionado." class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if(window.innerWidth <= 768) {
+                        document.querySelector('.nav-links').classList.remove('active');
+                    }
+                }
+            });
+        });
+        
+        // Adjust header on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
